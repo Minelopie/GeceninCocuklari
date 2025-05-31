@@ -7,28 +7,30 @@
   <style>
     :root {
       --blood-red: #8b0000;
-      --dark-bg: #121212;
-      --text-light: #e0e0e0;
+      --light-bg: #ffffff;
+      --light-gray: #f5f5f5;
       --text-dark: #111;
+      --text-light: #e0e0e0;
     }
-    
+
     body {
-      background-color: var(--dark-bg);
+      background-color: var(--light-bg);
       margin: 0;
       padding: 0;
       font-family: 'Georgia', serif;
-      color: var(--text-light);
+      color: var(--text-dark);
       line-height: 1.6;
     }
 
     nav {
-      background-color: #000;
+      background-color: var(--blood-red);
       padding: 1.5rem;
-      border-bottom: 2px solid var(--blood-red);
+      border-bottom: 2px solid #000;
+      text-align: center;
     }
 
     nav a {
-      color: var(--text-light);
+      color: var(--light-bg);
       text-decoration: none;
       margin: 0 1rem;
       font-weight: bold;
@@ -39,14 +41,14 @@
     }
 
     nav a:hover {
-      color: var(--blood-red);
-      text-shadow: 0 0 5px rgba(139, 0, 0, 0.7);
+      color: #ffffff;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
     }
 
     header {
       padding: 3rem 2rem;
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                  url('images/bg-dark.jpg') center/cover;
+      background-color: var(--light-bg);
+      text-align: center;
     }
 
     header img {
@@ -60,16 +62,34 @@
       font-size: 2.5rem;
       margin-top: 1.5rem;
       color: var(--blood-red);
-      text-shadow: 2px 2px 4px #000;
+      text-shadow: none;
     }
 
     main {
       padding: 2rem;
       max-width: 900px;
       margin: 2rem auto;
-      background-color: rgba(20, 20, 20, 0.8);
+      background-color: var(--light-gray);
       border-radius: 8px;
-      box-shadow: 0 0 15px rgba(139, 0, 0, 0.3);
+      box-shadow: 0 0 15px rgba(139, 0, 0, 0.1);
+    }
+
+    h2, h3 {
+      color: var(--blood-red);
+    }
+
+    .blood-divider {
+      text-align: center;
+      font-size: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    footer {
+      background-color: #eee;
+      padding: 1rem;
+      text-align: center;
+      color: var(--text-dark);
+      margin-top: 2rem;
     }
 
     /* Mobil Uyumluluk */
@@ -78,10 +98,12 @@
         padding: 1rem;
         text-align: center;
       }
+
       nav a {
         display: block;
         margin: 0.5rem 0;
       }
+
       h1 {
         font-size: 1.8rem;
       }
@@ -118,7 +140,7 @@
     </section>
   </main>
 
-  <footer style="background-color: #000; padding: 1rem; margin-top: 2rem;">
+  <footer>
     <p>© 2024 Gecenin Çocukları | World of Darkness fan projesi</p>
   </footer>
 </body>
