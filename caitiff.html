@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Caitiff - Klansız Vampirler</title>
+  <style>
+    body {
+      background-color: white;
+      color: #222;
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .tabs {
+      flex: 1;
+    }
+
+    .tab-buttons {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid #ccc;
+      margin-right: 20px;
+    }
+
+    .tab-buttons button {
+      background-color: transparent;
+      border: none;
+      padding: 15px;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .tab-buttons button:hover,
+    .tab-buttons button.active {
+      background-color: #eee;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .photo {
+      margin-left: 40px;
+    }
+
+    .photo img {
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      color: #333;
+      margin-top: 0;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="tabs">
+      <div class="tab-buttons">
+        <button class="tablink active" onclick="showTab('hakkinda')">Genel Bilgi</button>
+        <button class="tablink" onclick="showTab('ozellikler')">Avantaj ve Dezavantajlar</button>
+        <button class="tablink" onclick="showTab('toplum')">Kindred Toplumundaki Yeri</button>
+        <button class="tablink" onclick="showTab('rol')">Rol Yapma İpuçları</button>
+      </div>
+
+      <div class="tab-content active" id="hakkinda">
+        <h2>Genel Bilgi</h2>
+        <p><strong>Caitiff</strong>, herhangi bir klana mensup olmayan vampirler için kullanılan terimdir. Bu vampirler, soylarının kökeni bilinmediği veya bir şekilde klan bağlantılarından yoksun doğdukları için izole edilmişlerdir. Bazıları doğrudan Caitiff olarak yaratılırken, bazıları klanlarının onları reddetmesiyle bu konuma düşer.</p>
+      </div>
+
+      <div class="tab-content" id="ozellikler">
+        <h2>Avantaj ve Dezavantajlar</h2>
+        <ul>
+          <li><strong>Avantaj:</strong> Caitiff'ler, disiplin seçiminde özgürdür. Herhangi bir üç disiplini seçebilirler.</li>
+          <li><strong>Avantaj:</strong> Klan geleneği, politikası veya lanetiyle kısıtlanmazlar.</li>
+          <li><strong>Dezavantaj:</strong> Kindred toplumunda genellikle aşağı görülürler.</li>
+          <li><strong>Dezavantaj:</strong> Camarilla, Caitiff'leri nadiren kabul eder, hatta bazı bölgelerde varlıkları yasaktır.</li>
+        </ul>
+      </div>
+
+      <div class="tab-content" id="toplum">
+        <h2>Kindred Toplumundaki Yeri</h2>
+        <p>Caitiff’ler, özellikle yaşlı vampirler tarafından hor görülür. Klansızlık, vampir soyağacında bir kusur olarak kabul edilir. Bu yüzden Caitiff’ler genellikle Anarch hareketine katılır veya yalnız yaşamayı tercih ederler. Ancak özgürlükleri sayesinde, bazıları beklenmedik liderlere veya sıradışı bireylere dönüşebilir.</p>
+      </div>
+
+      <div class="tab-content" id="rol">
+        <h2>Rol Yapma İpuçları</h2>
+        <p>Caitiff karakteri oynarken, dışlanmışlık ve aidiyet arayışı önemli temalardır. Bir yandan özgürsünüz, diğer yandan kimseye ait değilsiniz. Bu da karakterinize melankolik, öfkeli veya özgürlükçü bir yön kazandırabilir. Toplum tarafından itilen bir figür olsanız da kendi yolunuzu çizebilirsiniz.</p>
+      </div>
+    </div>
+
+    <div class="photo">
+      <img src="images/caitiff.jpg" alt="Caitiff Görseli" />
+    </div>
+  </div>
+
+  <script>
+    function showTab(id) {
+      const contents = document.querySelectorAll(".tab-content");
+      const buttons = document.querySelectorAll(".tablink");
+
+      contents.forEach((content) => content.classList.remove("active"));
+      buttons.forEach((btn) => btn.classList.remove("active"));
+
+      document.getElementById(id).classList.add("active");
+      event.currentTarget.classList.add("active");
+    }
+  </script>
+</body>
+</html>
