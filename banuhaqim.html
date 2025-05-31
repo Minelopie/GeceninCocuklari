@@ -2,6 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Banu Haqim Klanı</title>
   <style>
     body {
@@ -12,27 +13,33 @@
       padding: 0;
     }
 
-    /* Menü için stil */
-    #menu-container {
-      background-color: #333;
-      color: white;
-      padding: 10px 20px;
-      font-family: Arial, sans-serif;
+    /* Menü stilleri */
+    nav {
+      background-color: #8b0000;
+      padding: 1.5rem;
+      border-bottom: 2px solid #000;
+      text-align: center;
     }
 
-    #menu-container a {
-      color: white;
+    nav a {
+      color: #ffffff;
       text-decoration: none;
-      margin-right: 20px;
+      margin: 0 1rem;
       font-weight: bold;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
     }
 
-    #menu-container a:hover {
-      text-decoration: underline;
+    nav a:hover {
+      color: #fff;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
     }
 
     .container {
       display: flex;
+      flex-wrap: wrap;
       max-width: 1200px;
       margin: 20px auto 0;
       padding: 20px;
@@ -40,6 +47,7 @@
 
     .tabs {
       flex: 1;
+      min-width: 300px;
     }
 
     .tab-buttons {
@@ -100,16 +108,16 @@
   <div class="container">
     <div class="tabs">
       <div class="tab-buttons">
-        <button class="tablink active" onclick="showTab('hakkinda')">Klan Hakkında</button>
-        <button class="tablink" onclick="showTab('disiplinler')">Disiplinler</button>
-        <button class="tablink" onclick="showTab('lanet')">Klan Laneti</button>
-        <button class="tablink" onclick="showTab('felsefe')">Felsefe ve Kültür</button>
-        <button class="tablink" onclick="showTab('tarihce')">Tarihçe</button>
+        <button class="tablink active" onclick="showTab('hakkinda', event)">Klan Hakkında</button>
+        <button class="tablink" onclick="showTab('disiplinler', event)">Disiplinler</button>
+        <button class="tablink" onclick="showTab('lanet', event)">Klan Laneti</button>
+        <button class="tablink" onclick="showTab('felsefe', event)">Felsefe ve Kültür</button>
+        <button class="tablink" onclick="showTab('tarihce', event)">Tarihçe</button>
       </div>
 
       <div class="tab-content active" id="hakkinda">
         <h2>Klan Hakkında</h2>
-        <p>Banu Haqim, eskiden Assamite olarak bilinen, adaletin ve cezalandırmanın klanıdır. Tarih boyunca Kindred dünyasında suikastçı vampirler olarak ün yapmışlardır. Günümüzde bu algı değişmekte; Banu Haqim, adaleti sağlayan bir güç olarak kendilerini tanımlar. Öz disiplinleri, bağlılıkları ve törelere olan sadakatleriyle öne çıkarlar.</p>
+        <p>Banu Haqim, eskiden Assamite olarak bilinen, adaletin ve cezalandırmanın klanıdır...</p>
       </div>
 
       <div class="tab-content" id="disiplinler">
@@ -123,17 +131,17 @@
 
       <div class="tab-content" id="lanet">
         <h2>Klan Laneti</h2>
-        <p>Banu Haqim vampirleri, diğer Kindred’ların kanına karşı derin bir arzuyla mücadele eder. Özellikle Vampir kanını içme arzuları zaman zaman kontrol edilemez hale gelebilir. Bu durum, özellikle Camarilla’da şüpheyle karşılanmalarına neden olmuştur.</p>
+        <p>Banu Haqim vampirleri, diğer Kindred’ların kanına karşı derin bir arzuyla mücadele eder...</p>
       </div>
 
       <div class="tab-content" id="felsefe">
         <h2>Felsefe ve Kültür</h2>
-        <p>Klanın merkezinde adalet ve cezalandırma fikri yatar. Banu Haqim, Kindred toplumunun yozlaşmasına karşı bir denge unsuru olarak kendilerini görür. İslami ve Ortadoğu kökenli geleneklerden etkilenen yapıları, birçoğunun yaşam felsefesine yön verir. Kanun ve düzeni sağlamak onlar için varoluşsal bir görevdir.</p>
+        <p>Klanın merkezinde adalet ve cezalandırma fikri yatar...</p>
       </div>
 
       <div class="tab-content" id="tarihce">
         <h2>Tarihçe</h2>
-        <p>Kökenleri Mezopotamya’ya dayanan Banu Haqim, Gehenna mitosunda bile adı geçen kadim bir klandır. Antik çağlardan bu yana Cainit’lerin içindeki yargıç ve cellat rollerini üstlenmişlerdir. Camarilla’dan uzun süre dışlanmış olan klan, modern çağda kendisini yeniden tanımlamakta ve global yapıya entegre olmaktadır.</p>
+        <p>Kökenleri Mezopotamya’ya dayanan Banu Haqim, Gehenna mitosunda bile adı geçen kadim bir klandır...</p>
       </div>
     </div>
 
@@ -150,17 +158,12 @@
         document.getElementById("menu-container").innerHTML = data;
       });
 
-    function showTab(id) {
+    function showTab(id, event) {
       const contents = document.querySelectorAll(".tab-content");
       const buttons = document.querySelectorAll(".tablink");
 
-      contents.forEach((content) => {
-        content.classList.remove("active");
-      });
-
-      buttons.forEach((btn) => {
-        btn.classList.remove("active");
-      });
+      contents.forEach(content => content.classList.remove("active"));
+      buttons.forEach(btn => btn.classList.remove("active"));
 
       document.getElementById(id).classList.add("active");
       event.currentTarget.classList.add("active");
