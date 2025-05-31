@@ -12,12 +12,12 @@
       padding: 0;
     }
 
-    /* Menü stili örneği */
     nav {
       background-color: #111;
       padding: 1rem;
       text-align: center;
     }
+
     nav a {
       color: #e0e0e0;
       text-decoration: none;
@@ -25,6 +25,7 @@
       font-weight: bold;
       font-size: 1.1rem;
     }
+
     nav a:hover {
       color: #b30000;
     }
@@ -91,17 +92,18 @@
   </style>
 </head>
 <body>
+
   <!-- Menü burada görünecek -->
   <div id="menu-container"></div>
 
   <div class="container">
     <div class="tabs">
       <div class="tab-buttons">
-        <button class="tablink active" onclick="showTab('hakkinda', this)">Klan Hakkında</button>
-        <button class="tablink" onclick="showTab('disiplinler', this)">Disiplinler</button>
-        <button class="tablink" onclick="showTab('lanet', this)">Klan Laneti</button>
-        <button class="tablink" onclick="showTab('felsefe', this)">Felsefe ve Kültür</button>
-        <button class="tablink" onclick="showTab('tarihce', this)">Tarihçe</button>
+        <button type="button" class="tablink active" onclick="showTab('hakkinda', this)">Klan Hakkında</button>
+        <button type="button" class="tablink" onclick="showTab('disiplinler', this)">Disiplinler</button>
+        <button type="button" class="tablink" onclick="showTab('lanet', this)">Klan Laneti</button>
+        <button type="button" class="tablink" onclick="showTab('felsefe', this)">Felsefe ve Kültür</button>
+        <button type="button" class="tablink" onclick="showTab('tarihce', this)">Tarihçe</button>
       </div>
 
       <div class="tab-content active" id="hakkinda">
@@ -135,16 +137,25 @@
     </div>
 
     <div class="photo">
-      <img src="images/brujahman.jpg" alt="Brujah Görseli" />
+      <img src="images/brujahman.jpg" alt="Brujah klanını temsil eden vampir karakter görseli" onerror="this.style.display='none'" />
     </div>
   </div>
 
   <script>
     // Menü içeriğini yükle
     fetch("menu.html")
-      .then(response => response.text())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Menü yüklenemedi.");
+        }
+        return response.text();
+      })
       .then(data => {
         document.getElementById("menu-container").innerHTML = data;
+      })
+      .catch(error => {
+        console.error("Menü yüklenirken hata:", error);
+        document.getElementById("menu-container").innerHTML = "<p style='color:red'>Menü yüklenemedi.</p>";
       });
 
     // Sekmeler arası geçiş fonksiyonu
