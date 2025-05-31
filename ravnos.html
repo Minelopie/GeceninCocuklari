@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ravnos Klanı</title>
+  <style>
+    body {
+      background-color: white;
+      color: #222;
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background-color: #4b0082;
+      padding: 1.5rem;
+      border-bottom: 2px solid #000;
+      text-align: center;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #dda0dd;
+      text-shadow: 0 0 5px rgba(221, 160, 221, 0.7);
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 20px auto 0;
+      padding: 20px;
+    }
+
+    .tabs {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .tab-buttons {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid #ccc;
+      margin-right: 20px;
+    }
+
+    .tab-buttons button {
+      background-color: transparent;
+      border: none;
+      padding: 15px;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .tab-buttons button:hover,
+    .tab-buttons button.active {
+      background-color: #eee;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .photo {
+      margin-left: 40px;
+    }
+
+    .photo img {
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      color: #4b0082;
+      margin-top: 0;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="menu-container"></div>
+
+  <div class="container">
+    <div class="tabs">
+      <div class="tab-buttons">
+        <button class="tablink active" onclick="showTab('hakkinda', event)">Klan Hakkında</button>
+        <button class="tablink" onclick="showTab('disiplinler', event)">Disiplinler</button>
+        <button class="tablink" onclick="showTab('lanet', event)">Klan Laneti</button>
+        <button class="tablink" onclick="showTab('felsefe', event)">Felsefe ve Kültür</button>
+        <button class="tablink" onclick="showTab('tarihce', event)">Tarihçe</button>
+      </div>
+
+      <div class="tab-content active" id="hakkinda">
+        <h2>Klan Hakkında</h2>
+        <p>Ravnos, kaos, illüzyon ve özgürlüğü benimseyen vampirlerden oluşur. V5 sisteminde hayatta kalabilen Ravnoslar, geçmişin felaketlerinden sonra az sayıda olmalarına rağmen hayatta kalma ve uyum sağlama becerileriyle dikkat çeker. Hilebazlıkları ve yol gösterici doğaları onları benzersiz kılar.</p>
+      </div>
+
+      <div class="tab-content" id="disiplinler">
+        <h2>Klan Disiplinleri</h2>
+        <ul>
+          <li><strong>Hayalat Gibi-İlüzyon (Obfuscate-Chimestry):</strong> Gerçekçi illüzyonlar yaratmalarını sağlar. Zihinleri kandırma ve dikkat dağıtma konusunda etkilidir.</li>
+          <li><strong>Hayvani (Animalism):</strong> Hayvanlarla iletişim kurma ve onları kontrol etme yeteneği sunar.</li>
+          <li><strong>Tutkunun Alevi (Presence):</strong> Fiziksel dayanıklılığı artırır, özellikle zorluklara karşı direnç sağlar.</li>
+        </ul>
+      </div>
+
+      <div class="tab-content" id="lanet">
+        <h2>Klan Laneti</h2>
+        <p>Ravnos vampirleri doğaları gereği yıkıcı arzulara sahiptir. V5’te bu lanet, yıkıma veya kaosa yönelik güçlü dürtülerle kendini gösterir. Bu dürtüler bastırılmazsa, Ravnos vampiri kontrolünü kaybedebilir ve kendi kendini tehlikeye atabilir.</p>
+      </div>
+
+      <div class="tab-content" id="felsefe">
+        <h2>Felsefe ve Kültür</h2>
+        <p>Ravnoslar gezgin bir yaşam tarzını benimser, çoğunlukla toplumun dışında yaşarlar. Onlar için özgürlük, bireysellik ve hilekârlık kutsaldır. Çoğu zaman diğer Kindred’lar tarafından güvenilmez görülürler, ama bilgelikleri küçümsenmemelidir.</p>
+      </div>
+
+      <div class="tab-content" id="tarihce">
+        <h2>Tarihçe</h2>
+        <p>Ravnoslar, Doğu'dan gelen kadim bir geçmişe sahiptir. V5 öncesinde “Ravnos Katliamı” olarak bilinen olayda büyük bir kısmı yok edilmiştir. Kalan az sayıdaki Ravnos, gizlilik içinde hayatta kalmış ve günümüzde yeniden güç kazanmaya başlamıştır.</p>
+      </div>
+    </div>
+
+    <div class="photo">
+      <img src="images/ravnos.jpg" alt="Ravnos Görseli" />
+    </div>
+  </div>
+
+  <script>
+    fetch("menu.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("menu-container").innerHTML = data;
+      });
+
+    function showTab(id, event) {
+      const contents = document.querySelectorAll(".tab-content");
+      const buttons = document.querySelectorAll(".tablink");
+
+      contents.forEach(content => content.classList.remove("active"));
+      buttons.forEach(btn => btn.classList.remove("active"));
+
+      document.getElementById(id).classList.add("active");
+      event.currentTarget.classList.add("active");
+    }
+  </script>
+</body>
+</html>
