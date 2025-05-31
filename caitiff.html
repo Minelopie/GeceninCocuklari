@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Caitiff - Klansız Vampirler</title>
   <style>
     body {
@@ -12,10 +12,38 @@
       padding: 0;
     }
 
+    /* Menü stili */
+    nav {
+      background-color: #444;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 6px 12px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background-color: #eee;
+      color: #222;
+    }
+
     .container {
       display: flex;
       max-width: 1200px;
-      margin: 0 auto;
+      margin: 20px auto;
       padding: 20px;
     }
 
@@ -75,13 +103,21 @@
 </head>
 <body>
 
+  <!-- Menü -->
+  <nav>
+    <a href="#" class="navlink active" onclick="showTab('hakkinda'); setActiveNav(event); return false;">Genel Bilgi</a>
+    <a href="#" class="navlink" onclick="showTab('ozellikler'); setActiveNav(event); return false;">Avantaj ve Dezavantajlar</a>
+    <a href="#" class="navlink" onclick="showTab('toplum'); setActiveNav(event); return false;">Kindred Toplumundaki Yeri</a>
+    <a href="#" class="navlink" onclick="showTab('rol'); setActiveNav(event); return false;">Rol Yapma İpuçları</a>
+  </nav>
+
   <div class="container">
     <div class="tabs">
       <div class="tab-buttons">
-        <button class="tablink active" onclick="showTab('hakkinda')">Genel Bilgi</button>
-        <button class="tablink" onclick="showTab('ozellikler')">Avantaj ve Dezavantajlar</button>
-        <button class="tablink" onclick="showTab('toplum')">Kindred Toplumundaki Yeri</button>
-        <button class="tablink" onclick="showTab('rol')">Rol Yapma İpuçları</button>
+        <button class="tablink active" onclick="showTab('hakkinda'); setActiveBtn(event);">Genel Bilgi</button>
+        <button class="tablink" onclick="showTab('ozellikler'); setActiveBtn(event);">Avantaj ve Dezavantajlar</button>
+        <button class="tablink" onclick="showTab('toplum'); setActiveBtn(event);">Kindred Toplumundaki Yeri</button>
+        <button class="tablink" onclick="showTab('rol'); setActiveBtn(event);">Rol Yapma İpuçları</button>
       </div>
 
       <div class="tab-content active" id="hakkinda">
@@ -120,11 +156,37 @@
       const contents = document.querySelectorAll(".tab-content");
       const buttons = document.querySelectorAll(".tablink");
 
-      contents.forEach((content) => content.classList.remove("active"));
-      buttons.forEach((btn) => btn.classList.remove("active"));
+      contents.forEach(content => content.classList.remove("active"));
+      buttons.forEach(btn => btn.classList.remove("active"));
 
       document.getElementById(id).classList.add("active");
+
+      // Butonlar arasındaki aktif durumu ayarlama (container içindeki)
+      // Burada event yok çünkü menüden de çağrılabilir, ayrı fonksiyonlarla hallediyoruz.
+    }
+
+    // Menüdeki aktif linki ayarlamak için
+    function setActiveNav(event) {
+      const navlinks = document.querySelectorAll("nav a");
+      navlinks.forEach(link => link.classList.remove("active"));
       event.currentTarget.classList.add("active");
+    }
+
+    // Yan menüdeki aktif butonu ayarlamak için
+    function setActiveBtn(event) {
+      const btns = document.querySelectorAll(".tablink");
+      btns.forEach(btn => btn.classList.remove("active"));
+      event.currentTarget.classList.add("active");
+
+      // Menüdeki aktif linki senkronize et
+      const id = event.currentTarget.getAttribute("onclick").match(/'([^']+)'/)[1];
+      const navlinks = document.querySelectorAll("nav a");
+      navlinks.forEach(link => link.classList.remove("active"));
+      navlinks.forEach(link => {
+        if(link.getAttribute("onclick").includes(id)){
+          link.classList.add("active");
+        }
+      });
     }
   </script>
 </body>
