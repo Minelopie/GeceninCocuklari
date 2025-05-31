@@ -2,71 +2,62 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Benim Sayfam</title>
-
-  <!-- Google Font: Gotik Stil -->
-  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome (ikonlar için) -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hakkında</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
       margin: 0;
       padding: 0;
-      background-color: #ffffff;
-      color: #e0e0e0;
-      font-family: 'UnifrakturCook', cursive;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
+      background-color: white;
+      font-family: Arial, sans-serif;
+      color: #222;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
       text-align: center;
     }
 
     h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: #b30000;
-    }
-
-    .social-icons {
-      margin-top: 1.5rem;
-    }
-
-    .social-icons a {
-      color: #e0e0e0;
-      text-decoration: none;
-      margin: 0 15px;
       font-size: 2.5rem;
-      transition: color 0.3s;
+      margin-bottom: 10px;
     }
 
-    .social-icons a:hover {
-      color: #b30000;
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
     }
 
-    .info {
-      max-width: 600px;
-      font-size: 1.4rem;
-      margin-top: 1rem;
+    .social {
+      margin-top: 30px;
+    }
+
+    .social a {
+      text-decoration: none;
+      color: #5865F2;
+      font-size: 2rem;
+      margin: 0 10px;
+      transition: transform 0.2s;
+    }
+
+    .social a:hover {
+      transform: scale(1.2);
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Hakkında</h1>
+    <p>Bu sayfa, VTM projesinin detaylarını içerir. Tasarımlar, içerikler ve yapım süreci hakkında bilgi edinmek için bizi takipte kalın.</p>
 
-  <h1>Gece'nin Yankısı</h1>
-  <div class="info">
-    <p>Vampire the Masquerade dünyasında hayatta kalmak için... Kimliğini seç, klanını bul, gecenin parçası ol.</p>
+    <div class="social">
+      <a href="https://discord.gg/SENIN-LINKIN" target="_blank" title="Discord">
+        <i class="fab fa-discord"></i>
+      </a>
+    </div>
   </div>
-
-  <div class="social-icons">
-    <a href="https://discord.gg/senin-linkin" target="_blank" title="Discord Sunucusu">
-      <i class="fab fa-discord"></i>
-    </a>
-  </div>
-
 </body>
 </html>
