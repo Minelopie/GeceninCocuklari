@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Brujah Klanı</title>
   <style>
     body {
@@ -13,21 +13,24 @@
     }
 
     nav {
-      background-color: #111;
-      padding: 1rem;
+      background-color: #1c1c1c;
+      padding: 1rem 0;
       text-align: center;
     }
 
     nav a {
-      color: #e0e0e0;
+      color: #f0f0f0;
       text-decoration: none;
-      margin: 0 15px;
+      margin: 0 20px;
       font-weight: bold;
       font-size: 1.1rem;
+      padding: 0.5rem;
+      transition: color 0.3s, border-bottom 0.3s;
     }
 
-    nav a:hover {
-      color: #b30000;
+    nav a:hover, nav a.active {
+      color: #ff4c4c;
+      border-bottom: 2px solid #ff4c4c;
     }
 
     .container {
@@ -93,19 +96,16 @@
 </head>
 <body>
 
-  <!-- Menü burada görünecek -->
-  <div id="menu-container"></div>
+  <nav>
+    <a href="#" class="active" onclick="showTab('hakkinda', this); return false;">Klan Hakkında</a>
+    <a href="#" onclick="showTab('disiplinler', this); return false;">Disiplinler</a>
+    <a href="#" onclick="showTab('lanet', this); return false;">Klan Laneti</a>
+    <a href="#" onclick="showTab('felsefe', this); return false;">Felsefe ve Kültür</a>
+    <a href="#" onclick="showTab('tarihce', this); return false;">Tarihçe</a>
+  </nav>
 
   <div class="container">
     <div class="tabs">
-      <div class="tab-buttons">
-        <button type="button" class="tablink active" onclick="showTab('hakkinda', this)">Klan Hakkında</button>
-        <button type="button" class="tablink" onclick="showTab('disiplinler', this)">Disiplinler</button>
-        <button type="button" class="tablink" onclick="showTab('lanet', this)">Klan Laneti</button>
-        <button type="button" class="tablink" onclick="showTab('felsefe', this)">Felsefe ve Kültür</button>
-        <button type="button" class="tablink" onclick="showTab('tarihce', this)">Tarihçe</button>
-      </div>
-
       <div class="tab-content active" id="hakkinda">
         <h2>Klan Hakkında</h2>
         <p>Brujah, tutkularıyla hareket eden, isyankar ve asi karakterleriyle bilinen bir vampir klanıdır...</p>
@@ -137,37 +137,17 @@
     </div>
 
     <div class="photo">
-      <img src="images/brujahman.jpg" alt="Brujah klanını temsil eden vampir karakter görseli" onerror="this.style.display='none'" />
+      <img src="images/brujahman.jpg" alt="Brujah Görseli" />
     </div>
   </div>
 
   <script>
-    // Menü içeriğini yükle
-    fetch("menu.html")
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Menü yüklenemedi.");
-        }
-        return response.text();
-      })
-      .then(data => {
-        document.getElementById("menu-container").innerHTML = data;
-      })
-      .catch(error => {
-        console.error("Menü yüklenirken hata:", error);
-        document.getElementById("menu-container").innerHTML = "<p style='color:red'>Menü yüklenemedi.</p>";
-      });
-
-    // Sekmeler arası geçiş fonksiyonu
-    function showTab(id, element) {
-      const contents = document.querySelectorAll(".tab-content");
-      const buttons = document.querySelectorAll(".tablink");
-
-      contents.forEach((content) => content.classList.remove("active"));
-      buttons.forEach((btn) => btn.classList.remove("active"));
-
+    function showTab(id, linkElement) {
+      document.querySelectorAll(".tab-content").forEach(el => el.classList.remove("active"));
       document.getElementById(id).classList.add("active");
-      element.classList.add("active");
+
+      document.querySelectorAll("nav a").forEach(link => link.classList.remove("active"));
+      linkElement.classList.add("active");
     }
   </script>
 </body>
