@@ -4,35 +4,112 @@
   <meta charset="UTF-8" />
   <title>Klanlar</title>
   <style>
-    <body>
-  <div class="center-image">
-    <img src="images/arka-plan.jpg" alt="Brujah Background">
-  </div>
-</body>
+    body {
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      color: #111;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #111;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: #e0e0e0;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    nav a:hover {
+      color: #b30000;
+    }
+
+    .klan-listesi {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem;
+    }
+
+    .klan {
+      width: 200px;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .klan:hover {
+      transform: scale(1.05);
+    }
+
+    .klan img {
+      width: 100%;
+      height: auto;
+    }
+
+    .center-image img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: auto;
+    }
   </style>
 </head>
 <body>
+
+  <!-- ✅ Menü buraya yüklenecek -->
+  <div id="menu-container"></div>
+
+  <script>
+    fetch("menu.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("menu-container").innerHTML = data;
+      });
+  </script>
+
+  <!-- ✅ Arka plan görsel (sayfa üstünde görsel gibi) -->
+  <div class="center-image">
+    <img src="images/background1.jpg" alt="Background">
+  </div>
+
   <h1>Klanlar</h1>
+
   <div class="klan-listesi">
-<div class="klan" onclick="window.open('banuhaqim.html', '_blank')">
+    <div class="klan" onclick="window.open('banuhaqim.html', '_blank')">
       <img src="images/banuhaqim.png" alt="banuhaqim Logo" />
       <h3>Banu Haqim</h3>
       <p>Suikastçılar, kadim yargıçlar, mistik savaşçılar...</p>
     </div>
-<div class="klan" onclick="window.open('brujah.html', '_blank')">
+
+    <div class="klan" onclick="window.open('brujah.html', '_blank')">
       <img src="images/brujah.png" alt="brujah logo" />
       <h3>Brujah</h3>
-  <p>Ateşli, asi ve özgürlükçü vampirler. Kurallara başkaldıranların klanı.</p>
-</div>
-<div class="klan" onclick="window.open('caitiff.html', '_blank')">
+      <p>Ateşli, asi ve özgürlükçü vampirler. Kurallara başkaldıranların klanı.</p>
+    </div>
+
+    <div class="klan" onclick="window.open('caitiff.html', '_blank')">
       <img src="images/caitiff.png" alt="caitiff Logo" />
       <h3>Caitiff</h3>
       <p>Kimsesizler, soy ağacı olmayan vampirler...</p>
-</div>
-<div class="klan" onclick="window.open('gangrel.html', '_blank')">
+    </div>
+
+    <div class="klan" onclick="window.open('gangrel.html', '_blank')">
       <img src="images/gangrel.png" alt="gangrel Logo" />
       <h3>Gangrel</h3>
       <p>Kurtadam benzeri vahşiler, hayatta kalma uzmanları...</p>
+    </div>
   </div>
+
 </body>
 </html>
