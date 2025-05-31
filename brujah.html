@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brujah Klanı</title>
   <style>
     body {
@@ -13,35 +14,39 @@
     }
 
     nav {
-      background-color: #1c1c1c;
-      padding: 1rem 0;
+      background-color: #8b0000;
+      padding: 1.5rem;
+      border-bottom: 2px solid #000;
       text-align: center;
     }
 
     nav a {
-      color: #f0f0f0;
+      color: #ffffff;
       text-decoration: none;
-      margin: 0 20px;
+      margin: 0 1rem;
       font-weight: bold;
       font-size: 1.1rem;
-      padding: 0.5rem;
-      transition: color 0.3s, border-bottom 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
     }
 
-    nav a:hover, nav a.active {
-      color: #ff4c4c;
-      border-bottom: 2px solid #ff4c4c;
+    nav a:hover {
+      color: #fff;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
     }
 
     .container {
       display: flex;
+      flex-wrap: wrap;
       max-width: 1200px;
-      margin: 20px auto;
+      margin: 20px auto 0;
       padding: 20px;
     }
 
     .tabs {
       flex: 1;
+      min-width: 300px;
     }
 
     .tab-buttons {
@@ -85,7 +90,7 @@
     }
 
     h2 {
-      color: #a00000;
+      color: #5e2d2d;
       margin-top: 0;
     }
 
@@ -96,58 +101,63 @@
 </head>
 <body>
 
-  <nav>
-    <a href="#" class="active" onclick="showTab('hakkinda', this); return false;">Klan Hakkında</a>
-    <a href="#" onclick="showTab('disiplinler', this); return false;">Disiplinler</a>
-    <a href="#" onclick="showTab('lanet', this); return false;">Klan Laneti</a>
-    <a href="#" onclick="showTab('felsefe', this); return false;">Felsefe ve Kültür</a>
-    <a href="#" onclick="showTab('tarihce', this); return false;">Tarihçe</a>
-  </nav>
+  <div id="menu-container"></div>
 
   <div class="container">
     <div class="tabs">
-      <div class="tab-content active" id="hakkinda">
-        <h2>Klan Hakkında</h2>
-        <p>Brujah, tutkularıyla hareket eden, isyankar ve asi karakterleriyle bilinen bir vampir klanıdır...</p>
+      <div class="tab-buttons">
+        <button class="tablink active" onclick="showTab('genel', event)">Klan Özeti</button>
+        <button class="tablink" onclick="showTab('disiplinler', event)">Disiplinler</button>
+        <button class="tablink" onclick="showTab('davranis', event)">Karakteristik Özellikler</button>
+        <button class="tablink" onclick="showTab('oyun', event)">Rol Yapma İpuçları</button>
+      </div>
+
+      <div class="tab-content active" id="genel">
+        <h2>Klan Özeti</h2>
+        <p>Brujah klanı, devrimci ve isyankar yapısıyla tanınır. Eskiden filozoflar ve entelektüellerin klanı olan Brujah, günümüzde öfke kontrolü zayıf, anarşist Kindred’larla anılır.</p>
       </div>
 
       <div class="tab-content" id="disiplinler">
         <h2>Klan Disiplinleri</h2>
         <ul>
-          <li><strong>Kuvvet (Potence):</strong> Doğaüstü fiziksel güç.</li>
-          <li><strong>Hız (Celerity):</strong> Üstün hız ve refleks.</li>
-          <li><strong>Tutkunun Ateşi (Presence):</strong> Karizma ve etkileme gücü.</li>
+          <li><strong>Potence:</strong> Aşırı fiziksel güç sağlar.</li>
+          <li><strong>Celerity:</strong> Hızlı ve çevik hareket imkanı verir.</li>
+          <li><strong>Presence:</strong> Karizma ve etkileyicilik sunar.</li>
         </ul>
       </div>
 
-      <div class="tab-content" id="lanet">
-        <h2>Klan Laneti</h2>
-        <p>Brujah’lar öfkelerine hâkim olmakta zorlanır...</p>
+      <div class="tab-content" id="davranis">
+        <h2>Karakteristik Özellikler</h2>
+        <p>Brujah’lar genellikle sinirli, sorgulayıcı ve otoriteye karşıdır. İçgüdüsel hareket ederler ama aynı zamanda ideolojik motivasyonları da olabilir.</p>
       </div>
 
-      <div class="tab-content" id="felsefe">
-        <h2>Felsefe ve Kültür</h2>
-        <p>Brujah kültürü çatışma, devrim ve özgürlük üzerine kuruludur...</p>
-      </div>
-
-      <div class="tab-content" id="tarihce">
-        <h2>Tarihçe</h2>
-        <p>Eski zamanlarda Brujah, bilgeliğin klanıydı...</p>
+      <div class="tab-content" id="oyun">
+        <h2>Rol Yapma İpuçları</h2>
+        <p>Brujah oynarken öfke patlamaları, meydan okuma ve sosyal devrimcilik öne çıkarılabilir. Anarşistler arasında sıkça yer alırlar.</p>
       </div>
     </div>
 
     <div class="photo">
-      <img src="images/brujahman.jpg" alt="Brujah Görseli" />
+      <img src="images/brujah.jpg" alt="Brujah Görseli" />
     </div>
   </div>
 
   <script>
-    function showTab(id, linkElement) {
-      document.querySelectorAll(".tab-content").forEach(el => el.classList.remove("active"));
-      document.getElementById(id).classList.add("active");
+    fetch("menu.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("menu-container").innerHTML = data;
+      });
 
-      document.querySelectorAll("nav a").forEach(link => link.classList.remove("active"));
-      linkElement.classList.add("active");
+    function showTab(id, event) {
+      const contents = document.querySelectorAll(".tab-content");
+      const buttons = document.querySelectorAll(".tablink");
+
+      contents.forEach(content => content.classList.remove("active"));
+      buttons.forEach(btn => btn.classList.remove("active"));
+
+      document.getElementById(id).classList.add("active");
+      event.currentTarget.classList.add("active");
     }
   </script>
 </body>
