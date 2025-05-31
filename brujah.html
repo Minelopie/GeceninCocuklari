@@ -1,64 +1,141 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Brujah Klanı</title>
   <style>
     body {
-      font-family: Georgia, serif;
-      background-color: #1a1a1a;
-      color: #f2f2f2;
+      background-color: white;
+      color: #222;
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
       padding: 20px;
     }
-    img {
-      max-width: 200px;
+
+    .tabs {
+      flex: 1;
+    }
+
+    .tab-buttons {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid #ccc;
+      margin-right: 20px;
+    }
+
+    .tab-buttons button {
+      background-color: transparent;
+      border: none;
+      padding: 15px;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .tab-buttons button:hover,
+    .tab-buttons button.active {
+      background-color: #eee;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
       display: block;
-      margin: 0 auto 20px;
     }
-    h1, h2 {
-      color: #ff4444;
-      text-align: center;
+
+    .photo {
+      margin-left: 40px;
     }
-    .icerik {
-      max-width: 800px;
-      margin: auto;
-      line-height: 1.6;
+
+    .photo img {
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
+
+    h2 {
+      color: #a00000;
+      margin-top: 0;
+    }
+
     ul {
       padding-left: 20px;
     }
   </style>
 </head>
 <body>
-  <img src="images/brujah.png" alt="Brujah Logo" />
-  <h1>Brujah Klanı</h1>
-  <div class="icerik">
-    <h2>Genel Bakış</h2>
-    <p>
-      Brujah, özgürlüğü, anarşiyi ve bireysel iradeyi her şeyin üstünde tutan bir vampir klanıdır. Zamanında bilgeliği ve felsefi düşünceyiyle tanınan bu klan, yüzyıllar içinde evrim geçirmiş ve günümüzde genellikle asi, isyankar ve ateşli kişiliklerle özdeşleşmiştir.
-    </p>
 
-    <h2>Karakteristik Özellikler</h2>
-    <ul>
-      <li><strong>Disiplinler:</strong> Celerity (Hız), Potence (Güç), Presence (Varlık)</li>
-      <li><strong>Zayıflık:</strong> Öfke sorunları – Brujah'lar kışkırtmaya açık ve Frenzy'ye (çılgınlığa) daha yatkındır.</li>
-      <li><strong>Arketip:</strong> Devrimci, anarşist, sokak savaşçısı, ideolog</li>
-    </ul>
+  <div class="container">
+    <div class="tabs">
+      <div class="tab-buttons">
+        <button class="tablink active" onclick="showTab('hakkinda')">Klan Hakkında</button>
+        <button class="tablink" onclick="showTab('disiplinler')">Disiplinler</button>
+        <button class="tablink" onclick="showTab('lanet')">Klan Laneti</button>
+        <button class="tablink" onclick="showTab('felsefe')">Felsefe ve Kültür</button>
+        <button class="tablink" onclick="showTab('tarihce')">Tarihçe</button>
+      </div>
 
-    <h2>Kültürel Yaklaşım</h2>
-    <p>
-      Brujah'lar çoğu zaman Camarilla kurallarına karşı çıkar, bu da onları Anarş Hareketi'nin öncüsü yapar. Aralarında filozoflar, sokak savaşçıları, aktivistler ve haydutlar bulunur. Onlar için asıl mesele, sistemi yıkmak değil, daha adil bir dünya kurmaktır.
-    </p>
+      <div class="tab-content active" id="hakkinda">
+        <h2>Klan Hakkında</h2>
+        <p>Brujah, tutkularıyla hareket eden, isyankar ve asi karakterleriyle bilinen bir vampir klanıdır. Eskiden felsefi tartışmaların ve entelektüel derinliğin temsilcisi olan bu klan, zamanla öfke patlamaları, adaletsizlikle savaş ve sosyal devrimle özdeşleşmiştir. Genellikle Camarilla otoritelerine karşı tavır alırlar ve Anarş hareketiyle sıkı bağları vardır.</p>
+      </div>
 
-    <h2>Tarihteki Rolü</h2>
-    <p>
-      Eski zamanlarda Brujah klanı, bilginliğiyle öne çıkan bir yapıya sahipti. Ancak zamanla içten yozlaşma ve dıştan gelen baskılarla birlikte daha öfkeli ve başkaldırıcı bir yapıya evrildi. Bugün çoğu Brujah, baskıcı yönetim biçimlerine, yozlaşmış prenslere ve otoriter Ventrue'lara karşı mücadele etmektedir.
-    </p>
+      <div class="tab-content" id="disiplinler">
+        <h2>Klan Disiplinleri</h2>
+        <ul>
+          <li><strong>Kuvvet (Potence):</strong> Doğaüstü fiziksel güç. Yumruklarıyla duvar yıkabilir, düşmanlarını tek hamlede alt edebilirler.</li>
+          <li><strong>Hız (Celerity):</strong> Üstün hız ve refleks. Saldırılardan kaçınma ve inanılmaz hızda karşılık verme yeteneği kazandırır.</li>
+          <li><strong>Tutkunun Ateşi (Presence):</strong> Karizma ve etkileme gücü. Kalabalıkları kışkırtmak ya da düşmanları yıldırmak için kullanılır.</li>
+        </ul>
+      </div>
 
-    <h2>Modern Gece Hayatı</h2>
-    <p>
-      Modern şehirlerde Brujah’lar genellikle motorcu çetelerinde, protesto liderliklerinde ya da yeraltı dövüş kulüplerinde bulunur. Onlar için gece, hem özgürlüğün hem de savaşın zamanıdır.
-    </p>
+      <div class="tab-content" id="lanet">
+        <h2>Klan Laneti</h2>
+        <p>Brujah’lar öfkelerine hâkim olmakta zorlanır. Diğer klanlara kıyasla <strong>Frenzy</strong> (çılgınlık) durumuna çok daha kolay girerler. Bu, onları savaşta güçlü kılabileceği gibi sosyal durumlarda büyük sorunlara yol açabilir.</p>
+      </div>
+
+      <div class="tab-content" id="felsefe">
+        <h2>Felsefe ve Kültür</h2>
+        <p>Brujah kültürü çatışma, devrim ve özgürlük üzerine kuruludur. Bir Brujah için kişisel özgürlük, kuraldan önemlidir. Genç nesil Brujah'lar genellikle anarşisttir, ama aralarında hâlâ eski bilgeliği korumaya çalışan filozoflar ve düşünürler de bulunur. Klan içinde ortak değer: <em>“Adalet için kaos.”</em></p>
+      </div>
+
+      <div class="tab-content" id="tarihce">
+        <h2>Tarihçe</h2>
+        <p>Eski zamanlarda Brujah, bilgeliğin klanıydı. Klanın efsanevi kurucusu Troile, adaletsizliğe karşı başkaldırısıyla tanınır. Ancak antik zamanlarda yaşanan iç savaşlar ve ihanetler klanı içten sarstı. Geçmişte ikinci şehirdeki yıkımda rol oynadıkları rivayet edilir. Modern çağda ise Brujah’lar sıklıkla devrimci hareketlerin ön saflarında yer almaktadır.</p>
+      </div>
+    </div>
+
+    <div class="photo">
+      <img src="images/brujahman.jpg" alt="Brujah Görseli" />
+    </div>
   </div>
+
+  <script>
+    function showTab(id) {
+      const contents = document.querySelectorAll(".tab-content");
+      const buttons = document.querySelectorAll(".tablink");
+
+      contents.forEach((content) => {
+        content.classList.remove("active");
+      });
+
+      buttons.forEach((btn) => {
+        btn.classList.remove("active");
+      });
+
+      document.getElementById(id).classList.add("active");
+      event.currentTarget.classList.add("active");
+    }
+  </script>
 </body>
 </html>
