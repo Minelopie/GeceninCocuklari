@@ -4,68 +4,63 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hakkında</title>
-<!-- Google Font: Gotik Stil -->
-  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome (ikonlar için) -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
+  <link rel="stylesheet" href="style.css" />
+  <!-- Temaya uygun Google Font örneği (değiştirebilirsin) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+  <!-- Font Awesome Discord ikonu için -->
+  <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
   <style>
     body {
+      background-color: white;
+      font-family: 'Cinzel', serif;
       margin: 0;
       padding: 0;
-      background-color: #0f0f0f;
-      color: #e0e0e0;
-      font-family: 'UnifrakturCook', cursive;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
     }
 
     .container {
-      max-width: 800px;
-      margin: 50px auto;
-      padding: 20px;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 20px;
       text-align: center;
     }
 
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+      font-size: 36px;
+      margin-bottom: 20px;
     }
 
     p {
-      font-size: 1.1rem;
+      font-size: 18px;
       line-height: 1.6;
     }
 
     .social {
-      margin-top: 30px;
+      margin-top: 40px;
     }
 
     .social a {
       text-decoration: none;
-      color: #5865F2;
-      font-size: 2rem;
+      color: #5865F2; /* Discord’un resmi rengi */
+      font-size: 32px;
+      transition: 0.3s ease;
       margin: 0 10px;
-      transition: transform 0.2s;
     }
 
     .social a:hover {
-      transform: scale(1.2);
+      color: #404EED;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Hakkında</h1>
-    <p>Bu sayfa, VTM projesinin detaylarını içerir. Tasarımlar, içerikler ve yapım süreci hakkında bilgi edinmek için bizi takipte kalın.</p>
+    <h1>Ben Kimim?</h1>
+    <p>
+      Merhaba! Bu site, Vampire: The Masquerade evrenine duyduğum ilgiyle oluşturulmuştur.
+      Amacım, klanlar ve arkaplanları hakkında özgün içerikler üretmek.
+    </p>
 
     <div class="social">
-      <a href="https://discord.gg/pytDHkUS" target="_blank" title="Discord">
+      <a href="https://discord.gg/pytDHkUS" target="_blank" aria-label="Discord">
         <i class="fab fa-discord"></i>
       </a>
     </div>
