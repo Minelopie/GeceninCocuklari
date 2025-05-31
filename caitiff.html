@@ -13,22 +13,24 @@
     }
 
     nav {
-      background-color: #111;
-      padding: 1rem;
+      background-color: #1c1c1c;
+      padding: 1rem 0;
       text-align: center;
     }
 
     nav a {
-      color: #e0e0e0;
+      color: #f0f0f0;
       text-decoration: none;
-      margin: 0 15px;
+      margin: 0 20px;
       font-weight: bold;
       font-size: 1.1rem;
+      padding: 0.5rem;
+      transition: color 0.3s, border-bottom 0.3s;
     }
 
-    nav a:hover,
-    nav a.active {
-      color: #b30000;
+    nav a:hover, nav a.active {
+      color: #ff4c4c;
+      border-bottom: 2px solid #ff4c4c;
     }
 
     .container {
@@ -40,28 +42,6 @@
 
     .tabs {
       flex: 1;
-    }
-
-    .tab-buttons {
-      display: flex;
-      flex-direction: column;
-      border-right: 1px solid #ccc;
-      margin-right: 20px;
-    }
-
-    .tab-buttons button {
-      background-color: transparent;
-      border: none;
-      padding: 15px;
-      text-align: left;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .tab-buttons button:hover,
-    .tab-buttons button.active {
-      background-color: #eee;
     }
 
     .tab-content {
@@ -94,18 +74,15 @@
 </head>
 <body>
 
-  <!-- Menü yükleme alanı -->
-  <div id="menu-container"></div>
+  <nav>
+    <a href="#" class="active" onclick="showTab('hakkinda', this); return false;">Genel Bilgi</a>
+    <a href="#" onclick="showTab('ozellikler', this); return false;">Avantaj ve Dezavantajlar</a>
+    <a href="#" onclick="showTab('toplum', this); return false;">Kindred Toplumundaki Yeri</a>
+    <a href="#" onclick="showTab('rol', this); return false;">Rol Yapma İpuçları</a>
+  </nav>
 
   <div class="container">
     <div class="tabs">
-      <div class="tab-buttons">
-        <button type="button" class="tablink active" onclick="showTab('hakkinda'); setActiveBtn(event);">Genel Bilgi</button>
-        <button type="button" class="tablink" onclick="showTab('ozellikler'); setActiveBtn(event);">Avantaj ve Dezavantajlar</button>
-        <button type="button" class="tablink" onclick="showTab('toplum'); setActiveBtn(event);">Kindred Toplumundaki Yeri</button>
-        <button type="button" class="tablink" onclick="showTab('rol'); setActiveBtn(event);">Rol Yapma İpuçları</button>
-      </div>
-
       <div class="tab-content active" id="hakkinda">
         <h2>Genel Bilgi</h2>
         <p><strong>Caitiff</strong>, herhangi bir klana mensup olmayan vampirler için kullanılan terimdir...</p>
@@ -115,65 +92,35 @@
         <h2>Avantaj ve Dezavantajlar</h2>
         <ul>
           <li><strong>Avantaj:</strong> Caitiff'ler, disiplin seçiminde özgürdür.</li>
-          <li><strong>Avantaj:</strong> Klan geleneği veya lanetiyle kısıtlanmazlar.</li>
-          <li><strong>Dezavantaj:</strong> Kindred toplumunda aşağı görülürler.</li>
-          <li><strong>Dezavantaj:</strong> Camarilla tarafından dışlanabilirler.</li>
+          <li><strong>Avantaj:</strong> Klan kısıtlamalarına tabi değildirler.</li>
+          <li><strong>Dezavantaj:</strong> Toplumda dışlanırlar.</li>
+          <li><strong>Dezavantaj:</strong> Camarilla tarafından nadiren kabul edilirler.</li>
         </ul>
       </div>
 
       <div class="tab-content" id="toplum">
         <h2>Kindred Toplumundaki Yeri</h2>
-        <p>Caitiff’ler genellikle Anarch hareketine katılır ya da yalnız yaşarlar...</p>
+        <p>Caitiff’ler, yaşlı vampirler tarafından hor görülür...</p>
       </div>
 
       <div class="tab-content" id="rol">
         <h2>Rol Yapma İpuçları</h2>
-        <p>Caitiff karakteri oynarken dışlanmışlık ve özgürlük temalarına odaklanabilirsiniz...</p>
+        <p>Caitiff karakteri oynarken, dışlanmışlık ve aidiyet arayışı önemli temalardır...</p>
       </div>
     </div>
 
     <div class="photo">
-      <img src="images/caitiff.jpg" alt="Caitiff Görseli" onerror="this.style.display='none'" />
+      <img src="images/caitiff.jpg" alt="Caitiff Görseli" />
     </div>
   </div>
 
   <script>
-    // Menü yükle
-    fetch("menu.html")
-      .then(response => {
-        if (!response.ok) throw new Error("Menü yüklenemedi.");
-        return response.text();
-      })
-      .then(data => {
-        document.getElementById("menu-container").innerHTML = data;
-      })
-      .catch(error => {
-        console.error("Menü hatası:", error);
-        document.getElementById("menu-container").innerHTML = "<p style='color:red;'>Menü yüklenemedi.</p>";
-      });
+    function showTab(id, linkElement) {
+      document.querySelectorAll(".tab-content").forEach(el => el.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
 
-    // Sekme gösterme
-    function showTab(id) {
-      const contents = document.querySelectorAll(".tab-content");
-      contents.forEach(c => c.classList.remove("active"));
-      const target = document.getElementById(id);
-      if (target) target.classList.add("active");
-    }
-
-    // Yan menüde aktif butonu ayarla
-    function setActiveBtn(event) {
-      const btns = document.querySelectorAll(".tablink");
-      btns.forEach(btn => btn.classList.remove("active"));
-      event.currentTarget.classList.add("active");
-
-      const id = event.currentTarget.getAttribute("onclick").match(/'([^']+)'/)[1];
-      const navlinks = document.querySelectorAll("nav a");
-      navlinks.forEach(link => link.classList.remove("active"));
-      navlinks.forEach(link => {
-        if (link.getAttribute("onclick")?.includes(id)) {
-          link.classList.add("active");
-        }
-      });
+      document.querySelectorAll("nav a").forEach(link => link.classList.remove("active"));
+      linkElement.classList.add("active");
     }
   </script>
 </body>
