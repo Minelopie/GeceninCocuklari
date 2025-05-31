@@ -154,12 +154,13 @@
       // Burada event yok çünkü menüden de çağrılabilir, ayrı fonksiyonlarla hallediyoruz.
     }
 
-    // Menüdeki aktif linki ayarlamak için
-    function setActiveNav(event) {
-      const navlinks = document.querySelectorAll("nav a");
-      navlinks.forEach(link => link.classList.remove("active"));
-      event.currentTarget.classList.add("active");
-    }
+    <script>
+    // Menü içeriğini yükle
+    fetch("menu.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("menu-container").innerHTML = data;
+      });
 
     // Yan menüdeki aktif butonu ayarlamak için
     function setActiveBtn(event) {
