@@ -42,6 +42,8 @@
       max-width: 1200px;
       margin: 20px auto 0;
       padding: 20px;
+      padding-right: 340px; 
+      box-sizing: border-box;
     }
 
     .tabs {
@@ -80,13 +82,18 @@
     }
 
     .photo {
-      margin-left: 40px;
-    }
-
-    .photo img {
+      position: fixed;
+      top: 20px;
+      right: 20px;
       width: 300px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      z-index: 1000; 
+    }
+
+    .photo img {
+      width: 100%;
+      display: block;
     }
 
     h2 {
