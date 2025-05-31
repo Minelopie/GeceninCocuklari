@@ -74,6 +74,21 @@
   </style>
 </head>
 <body>
+ <!-- ✅ Menü buraya yüklenecek -->
+  <div id="menu-container"></div>
+
+  <script>
+    fetch("menu.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("menu-container").innerHTML = data;
+      });
+  </script>
+
+  <!-- ✅ Arka plan görsel (sayfa üstünde görsel gibi) -->
+  <div class="center-image">
+    <img src="images/background1.jpg" alt="Background">
+  </div>
 
   <div class="container">
     <div class="tabs">
