@@ -18,6 +18,8 @@
       padding: 1.5rem;
       border-bottom: 2px solid #000;
       text-align: center;
+      position: relative;  /* EKLEDİĞİN SATIR */
+      z-index: 1100;
     }
 
     nav a {
@@ -81,15 +83,15 @@
       display: block;
     }
 
-    .photo {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 300px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      z-index: 1000; 
-    }
+.photo {
+  position: fixed;
+  top: 70px; /* menünün altına kaydır */
+  right: 20px;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
 
     .photo img {
       width: 100%;
