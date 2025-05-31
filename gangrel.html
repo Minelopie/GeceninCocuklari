@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Banu Haqim Klanı</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gangrel Klanı</title>
   <style>
     body {
       background-color: white;
@@ -13,7 +13,6 @@
       padding: 0;
     }
 
-    /* Menü stilleri */
     nav {
       background-color: #8b0000;
       padding: 1.5rem;
@@ -102,7 +101,6 @@
 </head>
 <body>
 
-  <!-- Menü yeri -->
   <div id="menu-container"></div>
 
   <div class="container">
@@ -117,41 +115,40 @@
 
       <div class="tab-content active" id="hakkinda">
         <h2>Klan Hakkında</h2>
-        <p>Banu Haqim, eskiden Assamite olarak bilinen, adaletin ve cezalandırmanın klanıdır...</p>
+        <p>Gangrel klanı, doğayla bütünleşmiş, yalnız kurt misali gezen vampirlerden oluşur. Vahşi, içgüdüsel ve özgürlüğüne düşkün bireylerdir. Şehir yaşamına uyum sağlamakta zorlanırlar.</p>
       </div>
 
       <div class="tab-content" id="disiplinler">
         <h2>Klan Disiplinleri</h2>
         <ul>
-          <li><strong>Kan Büyüsü (Blood Sorcery):</strong> Kan büyüsü ile ritüeller, lanetler ve büyüsel etkiler yaratabilirler.</li>
-          <li><strong>Hız (Celerity):</strong> Yıldırım hızıyla hareket ederek düşmanları şaşırtabilirler.</li>
-          <li><strong>Hayalet Gibi (Obfuscate):</strong> Görünmez olma, fark edilmeden hareket etme gibi gizlilik yetenekleri sunar.</li>
+          <li><strong>Animalism:</strong> Hayvanlarla iletişim kurma ve onları kontrol etme yeteneği.</li>
+          <li><strong>Fortitude:</strong> Fiziksel dayanıklılığı arttıran güç.</li>
+          <li><strong>Protean:</strong> Biçim değiştirme, pençelere dönüşme ve hatta toprağın içine gömülme gibi güçler.</li>
         </ul>
       </div>
 
       <div class="tab-content" id="lanet">
         <h2>Klan Laneti</h2>
-        <p>Banu Haqim vampirleri, diğer Kindred’ların kanına karşı derin bir arzuyla mücadele eder...</p>
+        <p>Gangrel vampirler Frenzy (öfke nöbeti) geçirdiklerinde, fiziksel olarak daha da vahşileşirler. Bu da onların daha hayvansı görünmelerine neden olur. Zamanla insanlıklarından uzaklaşabilirler.</p>
       </div>
 
       <div class="tab-content" id="felsefe">
         <h2>Felsefe ve Kültür</h2>
-        <p>Klanın merkezinde adalet ve cezalandırma fikri yatar...</p>
+        <p>Doğaya ve içgüdülere bağlı bir yaşam süren Gangrel’ler, çoğunlukla yalnız yaşar. Otoriteyi sevmez, kendi kurallarını koyarlar. Hayatta kalma ve özgürlük onlar için en büyük değerlerdir.</p>
       </div>
 
       <div class="tab-content" id="tarihce">
         <h2>Tarihçe</h2>
-        <p>Kökenleri Mezopotamya’ya dayanan Banu Haqim, Gehenna mitosunda bile adı geçen kadim bir klandır...</p>
+        <p>Gangrel klanı tarih boyunca göçebe yaşamı benimsemiştir. Çoğunlukla Anarch veya bağımsız kalmışlardır. Camarilla’ya katılmış olsalar da, pek çoğu sistemin bir parçası olmaktan hoşlanmaz.</p>
       </div>
     </div>
 
     <div class="photo">
-      <img src="images/banuhaqim.jpg" alt="Banu Haqim Görseli" />
+      <img src="images/gangrel.jpg" alt="Gangrel Görseli" />
     </div>
   </div>
 
   <script>
-    // Menü dosyasını yüklüyor
     fetch("menu.html")
       .then(response => response.text())
       .then(data => {

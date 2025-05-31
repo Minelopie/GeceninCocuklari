@@ -2,6 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Caitiff - Klansız Vampirler</title>
   <style>
     body {
@@ -12,15 +13,40 @@
       padding: 0;
     }
 
+    nav {
+      background-color: #8b0000;
+      padding: 1.5rem;
+      border-bottom: 2px solid #000;
+      text-align: center;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #fff;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+    }
+
     .container {
       display: flex;
+      flex-wrap: wrap;
       max-width: 1200px;
-      margin: 0 auto;
+      margin: 20px auto 0;
       padding: 20px;
     }
 
     .tabs {
       flex: 1;
+      min-width: 300px;
     }
 
     .tab-buttons {
@@ -64,7 +90,7 @@
     }
 
     h2 {
-      color: #333;
+      color: #5e2d2d;
       margin-top: 0;
     }
 
@@ -75,38 +101,38 @@
 </head>
 <body>
 
+  <div id="menu-container"></div>
+
   <div class="container">
     <div class="tabs">
       <div class="tab-buttons">
-        <button class="tablink active" onclick="showTab('hakkinda')">Genel Bilgi</button>
-        <button class="tablink" onclick="showTab('ozellikler')">Avantaj ve Dezavantajlar</button>
-        <button class="tablink" onclick="showTab('toplum')">Kindred Toplumundaki Yeri</button>
-        <button class="tablink" onclick="showTab('rol')">Rol Yapma İpuçları</button>
+        <button class="tablink active" onclick="showTab('hakkinda', event)">Genel Bilgi</button>
+        <button class="tablink" onclick="showTab('ozellikler', event)">Avantaj ve Dezavantajlar</button>
+        <button class="tablink" onclick="showTab('toplum', event)">Toplumdaki Yeri</button>
+        <button class="tablink" onclick="showTab('rol', event)">Rol Yapma İpuçları</button>
       </div>
 
       <div class="tab-content active" id="hakkinda">
         <h2>Genel Bilgi</h2>
-        <p><strong>Caitiff</strong>, herhangi bir klana mensup olmayan vampirler için kullanılan terimdir. Bu vampirler, soylarının kökeni bilinmediği veya bir şekilde klan bağlantılarından yoksun doğdukları için izole edilmişlerdir. Bazıları doğrudan Caitiff olarak yaratılırken, bazıları klanlarının onları reddetmesiyle bu konuma düşer.</p>
+        <p><strong>Caitiff</strong>, herhangi bir klana mensup olmayan vampirler için kullanılan terimdir...</p>
       </div>
 
       <div class="tab-content" id="ozellikler">
         <h2>Avantaj ve Dezavantajlar</h2>
         <ul>
-          <li><strong>Avantaj:</strong> Caitiff'ler, disiplin seçiminde özgürdür. Herhangi bir üç disiplini seçebilirler.</li>
-          <li><strong>Avantaj:</strong> Klan geleneği, politikası veya lanetiyle kısıtlanmazlar.</li>
-          <li><strong>Dezavantaj:</strong> Kindred toplumunda genellikle aşağı görülürler.</li>
-          <li><strong>Dezavantaj:</strong> Camarilla, Caitiff'leri nadiren kabul eder, hatta bazı bölgelerde varlıkları yasaktır.</li>
+          <li><strong>Avantaj:</strong> Disiplin seçimi serbesttir.</li>
+          <li><strong>Dezavantaj:</strong> Toplumda hor görülürler.</li>
         </ul>
       </div>
 
       <div class="tab-content" id="toplum">
         <h2>Kindred Toplumundaki Yeri</h2>
-        <p>Caitiff’ler, özellikle yaşlı vampirler tarafından hor görülür. Klansızlık, vampir soyağacında bir kusur olarak kabul edilir. Bu yüzden Caitiff’ler genellikle Anarch hareketine katılır veya yalnız yaşamayı tercih ederler. Ancak özgürlükleri sayesinde, bazıları beklenmedik liderlere veya sıradışı bireylere dönüşebilir.</p>
+        <p>Caitiff’ler, genellikle Anarch hareketine yönelir...</p>
       </div>
 
       <div class="tab-content" id="rol">
         <h2>Rol Yapma İpuçları</h2>
-        <p>Caitiff karakteri oynarken, dışlanmışlık ve aidiyet arayışı önemli temalardır. Bir yandan özgürsünüz, diğer yandan kimseye ait değilsiniz. Bu da karakterinize melankolik, öfkeli veya özgürlükçü bir yön kazandırabilir. Toplum tarafından itilen bir figür olsanız da kendi yolunuzu çizebilirsiniz.</p>
+        <p>Dışlanmışlık hissi, özgürlük arayışıyla dengelenebilir...</p>
       </div>
     </div>
 
@@ -116,12 +142,18 @@
   </div>
 
   <script>
-    function showTab(id) {
+    fetch("menu.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("menu-container").innerHTML = data;
+      });
+
+    function showTab(id, event) {
       const contents = document.querySelectorAll(".tab-content");
       const buttons = document.querySelectorAll(".tablink");
 
-      contents.forEach((content) => content.classList.remove("active"));
-      buttons.forEach((btn) => btn.classList.remove("active"));
+      contents.forEach(content => content.classList.remove("active"));
+      buttons.forEach(btn => btn.classList.remove("active"));
 
       document.getElementById(id).classList.add("active");
       event.currentTarget.classList.add("active");
