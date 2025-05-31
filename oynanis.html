@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Oynanış Mekanikleri</title>
+  <style>
+    body {
+      background-color: white;
+      color: #222;
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background-color: #8b0000;
+      padding: 1.5rem;
+      border-bottom: 2px solid #000;
+      text-align: center;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #fff;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 20px auto 0;
+      padding: 20px;
+    }
+
+    .tabs {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .tab-buttons {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid #ccc;
+      margin-right: 20px;
+    }
+
+    .tab-buttons button {
+      background-color: transparent;
+      border: none;
+      padding: 15px;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .tab-buttons button:hover,
+    .tab-buttons button.active {
+      background-color: #eee;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    h2 {
+      color: #5e2d2d;
+      margin-top: 0;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="menu-container"></div>
+
+  <div class="container">
+    <div class="tabs">
+      <div class="tab-buttons">
+        <button class="tablink active" onclick="showTab('aclik', event)">Açlık Mekaniği</button>
+        <button class="tablink" onclick="showTab('zar', event)">Zar Mekanikleri</button>
+        <button class="tablink" onclick="showTab('avci', event)">Avcı Tipleri</button>
+        <button class="tablink" onclick="showTab('insanlik', event)">İnsanlık ve Günahlar</button>
+        <button class="tablink" onclick="showTab('masquerade', event)">Masquerade Kuralları</button>
+      </div>
+
+      <div class="tab-content active" id="aclik">
+        <h2>Açlık Mekaniği</h2>
+        <p>V5 sisteminde vampirlerin açlık düzeyi 0’dan 5’e kadar artabilir. Açlık, vampirin insanüstü güçlerini kullanırken risk oluşturur. Açlık arttıkça, karakterin davranışları daha yırtıcı ve kontrolsüz hale gelir.</p>
+        <ul>
+          <li>Açlık 1-2: Hafif açlık, risk düşüktür.</li>
+          <li>Açlık 3-4: Karakter zorlukla kendini kontrol eder.</li>
+          <li>Açlık 5: Derhal beslenmesi gerekir, aksi halde Frenzy (çılgınlık) riski yüksektir.</li>
+        </ul>
+      </div>
+
+      <div class="tab-content" id="zar">
+        <h2>Zar Mekanikleri</h2>
+        <p>V5 sisteminde testler genellikle 10 yüzlü zarlarla (d10) yapılır. İlgili özellik ve beceri birleştirilerek toplam zar sayısı belirlenir.</p>
+        <ul>
+          <li>6 ve üzeri başarıdır.</li>
+          <li>10 çiftleri kritik başarıya neden olur.</li>
+          <li>Açlık zarları, normal zarlardan farklı renklerde atılır ve açlık sonucu belirler.</li>
+        </ul>
+      </div>
+
+      <div class="tab-content" id="avci">
+        <h2>Avcı Tipleri (Predator Types)</h2>
+        <p>Avcı Tipi, vampirin nasıl beslendiğini belirler ve karakter yaratımında özelliklerini etkiler.</p>
+        <ul>
+          <li><strong>Alleycat:</strong> Fiziksel baskı kullanır.</li>
+          <li><strong>Bagger:</strong> Önceden toplanmış kan kullanır.</li>
+          <li><strong>Cleaver:</strong> Ailesinden gizlice beslenir.</li>
+          <li><strong>Consensualist:</strong> Rızayla kan alır.</li>
+          <li><strong>Farmer:</strong> Hayvanlardan beslenir.</li>
+          <li><strong>Osiris:</strong> Hayranlardan kan alır.</li>
+          <li><strong>Sandman:</strong> Uyuyanlardan beslenir.</li>
+          <li>ve diğerleri...</li>
+        </ul>
+      </div>
+
+      <div class="tab-content" id="insanlik">
+        <h2>İnsanlık ve Günahlar</h2>
+        <p>Vampirler, insanlık seviyeleri düştükçe daha canavarımsı hale gelir. 10 insanlık ile başlarlar ve işlenen günahlara göre düşebilir.</p>
+        <p>Günahlar; masumları öldürmek, ihanet, sadizm gibi davranışlardır. Bu durumda ‘Remorse Test’ yapılır.</p>
+      </div>
+
+      <div class="tab-content" id="masquerade">
+        <h2>Masquerade Kuralları</h2>
+        <p>Masquerade, vampirlerin doğasını gizlemeleri için temel kurallardır. İhlal eden vampirler, Coterie’siyle ya da Prens tarafından cezalandırılabilir.</p>
+        <ul>
+          <li>Görünür şekilde beslenmek</li>
+          <li>Güçlerini insanların gözü önünde kullanmak</li>
+          <li>Vampirlerin varlığını açıklamak</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    fetch("menu.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("menu-container").innerHTML = data;
+      });
+
+    function showTab(id, event) {
+      const contents = document.querySelectorAll(".tab-content");
+      const buttons = document.querySelectorAll(".tablink");
+
+      contents.forEach(content => content.classList.remove("active"));
+      buttons.forEach(btn => btn.classList.remove("active"));
+
+      document.getElementById(id).classList.add("active");
+      event.currentTarget.classList.add("active");
+    }
+  </script>
+</body>
+</html>
