@@ -2,71 +2,68 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Benim Sayfam</title>
-
-  <!-- Google Font: Gotik Stil -->
-  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome (ikonlar için) -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hakkında</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Temaya uygun Google Font örneği (değiştirebilirsin) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+  <!-- Font Awesome Discord ikonu için -->
+  <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
   <style>
     body {
+      background-color: white;
+      font-family: 'Cinzel', serif;
       margin: 0;
       padding: 0;
-      background-color: #0f0f0f;
-      color: #e0e0e0;
-      font-family: 'UnifrakturCook', cursive;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 20px;
       text-align: center;
     }
 
     h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: #b30000;
+      font-size: 36px;
+      margin-bottom: 20px;
     }
 
-    .social-icons {
-      margin-top: 1.5rem;
+    p {
+      font-size: 18px;
+      line-height: 1.6;
     }
 
-    .social-icons a {
-      color: #e0e0e0;
+    .social {
+      margin-top: 40px;
+    }
+
+    .social a {
       text-decoration: none;
-      margin: 0 15px;
-      font-size: 2.5rem;
-      transition: color 0.3s;
+      color: #5865F2; /* Discord’un resmi rengi */
+      font-size: 32px;
+      transition: 0.3s ease;
+      margin: 0 10px;
     }
 
-    .social-icons a:hover {
-      color: #b30000;
-    }
-
-    .info {
-      max-width: 600px;
-      font-size: 1.4rem;
-      margin-top: 1rem;
+    .social a:hover {
+      color: #404EED;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Ben Kimim?</h1>
+    <p>
+      Merhaba! Bu site, Vampire: The Masquerade evrenine duyduğum ilgiyle oluşturulmuştur.
+      Amacım, klanlar ve arkaplanları hakkında özgün içerikler üretmek.
+    </p>
 
-  <h1>Gece'nin Yankısı</h1>
-  <div class="info">
-    <p>Vampire the Masquerade dünyasında hayatta kalmak için... Kimliğini seç, klanını bul, gecenin parçası ol.</p>
+   <div class="social">
+      <a href="https://discord.gg/pytDHkUS" target="_blank" title="Discord">
+        <i class="fab fa-discord"></i>
+      </a>
+    </div>
   </div>
-
-  <div class="social-icons">
-    <a href="https://discord.gg/senin-linkin" target="_blank" title="Discord Sunucusu">
-      <i class="fab fa-discord"></i>
-    </a>
-  </div>
-
 </body>
 </html>
