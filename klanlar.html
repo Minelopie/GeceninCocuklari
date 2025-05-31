@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Klanlar</title>
-  <!-- Aynı stil ve nav kodunu buraya da yapıştır -->
+  <style>
+    body { font-family: Arial, sans-serif; background: #121212; color: #eee; }
+    .klan-listesi { display: flex; flex-wrap: wrap; gap: 20px; }
+    .klan { background: #222; padding: 10px; border-radius: 8px; width: 180px; text-align: center; cursor: pointer; }
+    .klan img { max-width: 100%; height: auto; }
+    .klan:hover { background: #444; }
+  </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html">Anasayfa</a>
-    <a href="klanlar.html">Klanlar</a>
-    <a href="disiplinler.html">Disiplinler</a>
-    <a href="masquerade.html">Masquerade</a>
-    <a href="hakkinda.html">Hakkında</a>
-  </nav>
-  <main>
-    <h1>Klanlar</h1>
-    <p>Bu sayfada Vampire the Masquerade evrenindeki vampir klanlarını tanıtacağız.</p>
-  </main>
+  <h1>Klanlar</h1>
+  <div class="klan-listesi">
+    <div class="klan" onclick="window.open('klan1.html', '_blank')">
+      <img src="klan1.png" alt="Klan 1 Logo" />
+      <h3>Klan 1</h3>
+      <p>Klan 1 kısa tanıtımı...</p>
+    </div>
+    <div class="klan" onclick="window.open('klan2.html', '_blank')">
+      <img src="klan2.png" alt="Klan 2 Logo" />
+      <h3>Klan 2</h3>
+      <p>Klan 2 kısa tanıtımı...</p>
+    </div>
+    <!-- Diğer klanlar buraya -->
+  </div>
 </body>
 </html>
