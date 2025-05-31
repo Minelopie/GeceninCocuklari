@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Caitiff - Klansız Vampirler</title>
   <style>
     body {
@@ -13,35 +14,61 @@
     }
 
     nav {
-      background-color: #1c1c1c;
-      padding: 1rem 0;
+      background-color: #8b0000;
+      padding: 1.5rem;
+      border-bottom: 2px solid #000;
       text-align: center;
     }
 
     nav a {
-      color: #f0f0f0;
+      color: #ffffff;
       text-decoration: none;
-      margin: 0 20px;
+      margin: 0 1rem;
       font-weight: bold;
       font-size: 1.1rem;
-      padding: 0.5rem;
-      transition: color 0.3s, border-bottom 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
     }
 
-    nav a:hover, nav a.active {
-      color: #ff4c4c;
-      border-bottom: 2px solid #ff4c4c;
+    nav a:hover {
+      color: #fff;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
     }
 
     .container {
       display: flex;
+      flex-wrap: wrap;
       max-width: 1200px;
-      margin: 20px auto;
+      margin: 20px auto 0;
       padding: 20px;
     }
 
     .tabs {
       flex: 1;
+      min-width: 300px;
+    }
+
+    .tab-buttons {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid #ccc;
+      margin-right: 20px;
+    }
+
+    .tab-buttons button {
+      background-color: transparent;
+      border: none;
+      padding: 15px;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .tab-buttons button:hover,
+    .tab-buttons button.active {
+      background-color: #eee;
     }
 
     .tab-content {
@@ -63,7 +90,7 @@
     }
 
     h2 {
-      color: #a00000;
+      color: #5e2d2d;
       margin-top: 0;
     }
 
@@ -74,15 +101,17 @@
 </head>
 <body>
 
-  <nav>
-    <a href="#" class="active" onclick="showTab('hakkinda', this); return false;">Genel Bilgi</a>
-    <a href="#" onclick="showTab('ozellikler', this); return false;">Avantaj ve Dezavantajlar</a>
-    <a href="#" onclick="showTab('toplum', this); return false;">Kindred Toplumundaki Yeri</a>
-    <a href="#" onclick="showTab('rol', this); return false;">Rol Yapma İpuçları</a>
-  </nav>
+  <div id="menu-container"></div>
 
   <div class="container">
     <div class="tabs">
+      <div class="tab-buttons">
+        <button class="tablink active" onclick="showTab('hakkinda', event)">Genel Bilgi</button>
+        <button class="tablink" onclick="showTab('ozellikler', event)">Avantaj ve Dezavantajlar</button>
+        <button class="tablink" onclick="showTab('toplum', event)">Toplumdaki Yeri</button>
+        <button class="tablink" onclick="showTab('rol', event)">Rol Yapma İpuçları</button>
+      </div>
+
       <div class="tab-content active" id="hakkinda">
         <h2>Genel Bilgi</h2>
         <p><strong>Caitiff</strong>, herhangi bir klana mensup olmayan vampirler için kullanılan terimdir...</p>
@@ -91,21 +120,19 @@
       <div class="tab-content" id="ozellikler">
         <h2>Avantaj ve Dezavantajlar</h2>
         <ul>
-          <li><strong>Avantaj:</strong> Caitiff'ler, disiplin seçiminde özgürdür.</li>
-          <li><strong>Avantaj:</strong> Klan kısıtlamalarına tabi değildirler.</li>
-          <li><strong>Dezavantaj:</strong> Toplumda dışlanırlar.</li>
-          <li><strong>Dezavantaj:</strong> Camarilla tarafından nadiren kabul edilirler.</li>
+          <li><strong>Avantaj:</strong> Disiplin seçimi serbesttir.</li>
+          <li><strong>Dezavantaj:</strong> Toplumda hor görülürler.</li>
         </ul>
       </div>
 
       <div class="tab-content" id="toplum">
         <h2>Kindred Toplumundaki Yeri</h2>
-        <p>Caitiff’ler, yaşlı vampirler tarafından hor görülür...</p>
+        <p>Caitiff’ler, genellikle Anarch hareketine yönelir...</p>
       </div>
 
       <div class="tab-content" id="rol">
         <h2>Rol Yapma İpuçları</h2>
-        <p>Caitiff karakteri oynarken, dışlanmışlık ve aidiyet arayışı önemli temalardır...</p>
+        <p>Dışlanmışlık hissi, özgürlük arayışıyla dengelenebilir...</p>
       </div>
     </div>
 
@@ -115,12 +142,21 @@
   </div>
 
   <script>
-    function showTab(id, linkElement) {
-      document.querySelectorAll(".tab-content").forEach(el => el.classList.remove("active"));
-      document.getElementById(id).classList.add("active");
+    fetch("menu.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("menu-container").innerHTML = data;
+      });
 
-      document.querySelectorAll("nav a").forEach(link => link.classList.remove("active"));
-      linkElement.classList.add("active");
+    function showTab(id, event) {
+      const contents = document.querySelectorAll(".tab-content");
+      const buttons = document.querySelectorAll(".tablink");
+
+      contents.forEach(content => content.classList.remove("active"));
+      buttons.forEach(btn => btn.classList.remove("active"));
+
+      document.getElementById(id).classList.add("active");
+      event.currentTarget.classList.add("active");
     }
   </script>
 </body>
