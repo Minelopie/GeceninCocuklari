@@ -1,73 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Gecenin Çocukları - Anasayfa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gecenin Çocukları - V5 Türkçe Rehber</title>
   <style>
+    :root {
+      --blood-red: #8b0000;
+      --dark-bg: #121212;
+      --text-light: #e0e0e0;
+      --text-dark: #111;
+    }
+    
     body {
-      background-color: #ffffff;
+      background-color: var(--dark-bg);
       margin: 0;
       padding: 0;
       font-family: 'Georgia', serif;
-      color: #111;
-      text-align: center;
+      color: var(--text-light);
+      line-height: 1.6;
     }
 
     nav {
-      background-color: #111;
-      padding: 1rem;
+      background-color: #000;
+      padding: 1.5rem;
+      border-bottom: 2px solid var(--blood-red);
     }
 
     nav a {
-      color: #e0e0e0;
+      color: var(--text-light);
       text-decoration: none;
-      margin: 0 15px;
+      margin: 0 1rem;
       font-weight: bold;
       font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
     }
 
     nav a:hover {
-      color: #b30000;
+      color: var(--blood-red);
+      text-shadow: 0 0 5px rgba(139, 0, 0, 0.7);
     }
 
     header {
-      padding: 2rem;
+      padding: 3rem 2rem;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                  url('images/bg-dark.jpg') center/cover;
     }
 
     header img {
       width: 400px;
       max-width: 90%;
       height: auto;
+      filter: drop-shadow(0 0 10px rgba(139, 0, 0, 0.5));
     }
 
     h1 {
-      font-size: 2rem;
-      margin-top: 1rem;
+      font-size: 2.5rem;
+      margin-top: 1.5rem;
+      color: var(--blood-red);
+      text-shadow: 2px 2px 4px #000;
     }
 
     main {
       padding: 2rem;
-      max-width: 800px;
-      margin: auto;
+      max-width: 900px;
+      margin: 2rem auto;
+      background-color: rgba(20, 20, 20, 0.8);
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(139, 0, 0, 0.3);
+    }
+
+    /* Mobil Uyumluluk */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem;
+        text-align: center;
+      }
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
     }
   </style>
 </head>
 <body>
-
-  <!-- ✅ Menü buraya -->
   <nav>
     <a href="index.html">Anasayfa</a>
     <a href="klanlar.html">Klanlar</a>
     <a href="disiplinler.html">Disiplinler</a>
     <a href="masquerade.html">Masquerade</a>
-    <a href="Hakkinda.html">Hakkında</a>
+    <a href="hakkinda.html">Hakkında</a>
   </nav>
 
   <header>
-    <img src="images/logo.png" alt="Gecenin Çocukları Logosu">
-    <h1>Vampire the Masquerade Dünyasına Hoşgeldiniz</h1>
+    <img src="images/logo.png" alt="Vampire the Masquerade Türkçe Rehber Logosu">
+    <h1>Karanlığın Çağrısı</h1>
   </header>
 
   <main>
-    <p>Bu site, Vampire the Masquerade V5 evrenine ait Türkçe bilgiler sunar. Karanlıkta yaşayan ölümsüzlerin dünyasına adım atın...</p>
+    <section>
+      <h2>Kanın Çağrısı</h2>
+      <p>Bu rehber, <strong>Vampire: The Masquerade 5th Edition</strong> evreninin Türkçe kaynağıdır. Kindred'ın gizli dünyasında yolunuzu bulmanız için tüm klanlar, disiplinler ve kurallar detaylıca açıklanmıştır.</p>
+      
+      <div class="blood-divider">🜸 🜸 🜸</div>
+      
+      <h3>Son Güncellemeler</h3>
+      <ul style="text-align: left;">
+        <li>Klan sayfalarına yeni konsept sanatlar eklendi</li>
+        <li>Disiplinler bölümüne V5 kuralları entegre edildi</li>
+        <li>Masquerade ihlalleri için yeni örnek senaryolar</li>
+      </ul>
+    </section>
   </main>
 
+  <footer style="background-color: #000; padding: 1rem; margin-top: 2rem;">
+    <p>© 2024 Gecenin Çocukları | World of Darkness fan projesi</p>
+  </footer>
 </body>
+</html>
